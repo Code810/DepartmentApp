@@ -1,4 +1,5 @@
 ﻿using DepartmentApp.Domain.Models.Common;
+using DepartmentApp.Domain.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace DepartmentApp.Domain.Models
         public string Email { get; set; }
         public string Password { get; set; }
         public Department department { get; set; }
+
+        public Roles Rol=Roles.user;
     }
 }

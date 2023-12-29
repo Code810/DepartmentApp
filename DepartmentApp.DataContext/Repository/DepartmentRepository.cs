@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DepartmentApp.DataContext.Repository
@@ -12,27 +13,59 @@ namespace DepartmentApp.DataContext.Repository
     {
         public bool Creat(Department entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DBContext.Departments.Add(entity);
+                DBContext.DepartmentsAddFile();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Delete(Department entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DBContext.Departments.Remove(entity);
+                DBContext.DepartmentsAddFile();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Department Get(Predicate<Department> filter)
         {
-            throw new NotImplementedException();
+            return DBContext.Departments.Find(filter);
         }
 
         public List<Department> GetAll(Predicate<Department> filter = null)
         {
-            throw new NotImplementedException();
+            return filter is null ? DBContext.Departments : DBContext.Departments.FindAll(filter);
         }
 
         public bool Update(Department entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var existDepartment = Get(u => u.Id == entity.Id);
+                existDepartment = entity;
+                DBContext.DepartmentsAddFile();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

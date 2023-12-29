@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DepartmentApp.DataContext.Interface
 {
-    public interface IRepostery<T> where T : BaseEntity
+    public interface IRepository<T> where T : BaseEntity
     {
         bool Creat(T entity);
         bool Update(T entity);

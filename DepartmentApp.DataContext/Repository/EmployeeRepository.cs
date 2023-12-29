@@ -12,27 +12,59 @@ namespace DepartmentApp.DataContext.Repository
     {
         public bool Creat(Employee entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DBContext.Employees.Add(entity);
+                DBContext.EmployeesAddFile();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Delete(Employee entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DBContext.Employees.Remove(entity);
+                DBContext.EmployeesAddFile();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Employee Get(Predicate<Employee> filter)
         {
-            throw new NotImplementedException();
+            return DBContext.Employees.Find(filter);
         }
 
         public List<Employee> GetAll(Predicate<Employee> filter = null)
         {
-            throw new NotImplementedException();
+            return filter is null ? DBContext.Employees : DBContext.Employees.FindAll(filter);
         }
 
         public bool Update(Employee entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var existEmployee = Get(u => u.Id == entity.Id);
+                existEmployee = entity;
+                DBContext.EmployeesAddFile();
+                return true;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
