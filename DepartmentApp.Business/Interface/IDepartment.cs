@@ -11,7 +11,7 @@ namespace DepartmentApp.Business.Interface
     public interface IDepartment
     {
         Department Creat(Department department);
-        Department Update(int id, Department department, string departmentName);
+        Department Update(int id, Department department);
         Department Delete(int id);
         Department Get(int id);
         List<Department> GetAll();
