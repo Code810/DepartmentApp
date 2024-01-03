@@ -18,6 +18,6 @@ namespace DepartmentApp.Domain.Models
         public string Password { get; set; }
         public Department department { get; set; }
 
-        public Roles Rol=Roles.user;
+        public Roles Rol { get; set; } = Roles.User;
     }
 }

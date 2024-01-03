@@ -16,13 +16,12 @@ namespace DepartmentApp.DataContext.Repository
             try
             {
                 DBContext.Departments.Add(entity);
-                DBContext.DepartmentsAddFile();
+               
                 return true;
             }
             catch (Exception)
             {
-
-                throw;
+                return false;
             }
         }
 
@@ -31,13 +30,12 @@ namespace DepartmentApp.DataContext.Repository
             try
             {
                 DBContext.Departments.Remove(entity);
-                DBContext.DepartmentsAddFile();
                 return true;
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
         }
 
@@ -57,14 +55,13 @@ namespace DepartmentApp.DataContext.Repository
             {
                 var existDepartment = Get(u => u.Id == entity.Id);
                 existDepartment = entity;
-                DBContext.DepartmentsAddFile();
                 return true;
 
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
         }
     }

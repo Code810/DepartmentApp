@@ -28,7 +28,7 @@ namespace DepartmentApp.Business.Servicess
             employee.department=existDepartment;
             bool result = _employeeRepository.Creat(employee);
             if (!result) return null;
-            
+            DBContext.SaveChange();
             return employee;
         }
 
@@ -39,6 +39,7 @@ namespace DepartmentApp.Business.Servicess
             if (_employeeRepository.Delete(existEmployee))
             {
                 existEmployee.DeletedDate = DateTime.Now;
+                DBContext.SaveChange();
                 return existEmployee;
             }
             else return null;
@@ -80,6 +81,7 @@ namespace DepartmentApp.Business.Servicess
            employee.department.Name = departmentName;
             if (_employeeRepository.Update(employee))
             {
+                DBContext.SaveChange();
                 return employee;
             }
             else

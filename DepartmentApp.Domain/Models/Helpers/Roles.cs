@@ -8,7 +8,7 @@ namespace DepartmentApp.Domain.Models.Helpers
 {
     public enum Roles
     {
-        user,
+        User,
         Admin
     }
 }

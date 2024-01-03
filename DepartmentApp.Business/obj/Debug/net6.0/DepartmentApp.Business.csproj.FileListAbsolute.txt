@@ -1,0 +1,17 @@
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.Business.deps.json
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.Business.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.Business.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.DataContext.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.Domain.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.DataContext.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\bin\Debug\net6.0\DepartmentApp.Domain.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.csproj.AssemblyReference.cache
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.AssemblyInfoInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.AssemblyInfo.cs
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.csproj.CoreCompileInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.csproj.CopyComplete
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\refint\DepartmentApp.Business.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\DepartmentApp.Business.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Business\obj\Debug\net6.0\ref\DepartmentApp.Business.dll

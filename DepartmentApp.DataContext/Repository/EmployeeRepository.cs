@@ -14,14 +14,13 @@ namespace DepartmentApp.DataContext.Repository
         {
             try
             {
-                DBContext.Employees.Add(entity);
-                DBContext.EmployeesAddFile();
+                DBContext.Employees.Add(entity); 
                 return true;
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
         }
 
@@ -29,14 +28,13 @@ namespace DepartmentApp.DataContext.Repository
         {
             try
             {
-                DBContext.Employees.Remove(entity);
-                DBContext.EmployeesAddFile();
+                DBContext.Employees.Remove(entity); 
                 return true;
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
         }
 
@@ -56,14 +54,13 @@ namespace DepartmentApp.DataContext.Repository
             {
                 var existEmployee = Get(u => u.Id == entity.Id);
                 existEmployee = entity;
-                DBContext.EmployeesAddFile();
                 return true;
 
             }
             catch (Exception)
             {
 
-                throw;
+                return false;
             }
         }
     }

@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "yLq9DByNpyos4J9bJpV4pQOwojrfmvTyflcTRxBJjBgrY2M9/MZJ5bIb2P0LmdHoeuC6j1vGjDtynGJCJUeqew==",
+  "dgSpecHash": "xbmyr9ga7FvA0wU4jqXXFgtCDR/n5L43H8ELJOD1YTko8uJGNWZ1C0LSXrT2tgxUWGN0587M9AMA9paVs/gNvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp\\DepartmentApp\\DepartmentApp\\DepartmentApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\seidb\\.nuget\\packages\\nstack.core\\1.0.7\\nstack.core.1.0.7.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\system.codedom\\7.0.0\\system.codedom.7.0.0.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\terminal.gui\\1.14.1\\terminal.gui.1.14.1.nupkg.sha512"
+  ],
   "logs": []
 }

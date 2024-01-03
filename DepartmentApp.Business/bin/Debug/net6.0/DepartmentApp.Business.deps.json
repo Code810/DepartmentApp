@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DepartmentApp.Business/1.0.0": {
+        "dependencies": {
+          "DepartmentApp.DataContext": "1.0.0"
+        },
+        "runtime": {
+          "DepartmentApp.Business.dll": {}
+        }
+      },
+      "DepartmentApp.DataContext/1.0.0": {
+        "dependencies": {
+          "DepartmentApp.Domain": "1.0.0"
+        },
+        "runtime": {
+          "DepartmentApp.DataContext.dll": {}
+        }
+      },
+      "DepartmentApp.Domain/1.0.0": {
+        "runtime": {
+          "DepartmentApp.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DepartmentApp.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DepartmentApp.DataContext/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DepartmentApp.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

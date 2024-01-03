@@ -1,0 +1,11 @@
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\bin\Debug\net6.0\DepartmentApp.Domain.deps.json
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\bin\Debug\net6.0\DepartmentApp.Domain.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\bin\Debug\net6.0\DepartmentApp.Domain.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.AssemblyInfoInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.AssemblyInfo.cs
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\refint\DepartmentApp.Domain.dll
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\DepartmentApp.Domain.pdb
+C:\Users\seidb\OneDrive\Masaüstü\DepartmentApp\DepartmentApp\DepartmentApp.Domain\obj\Debug\net6.0\ref\DepartmentApp.Domain.dll
