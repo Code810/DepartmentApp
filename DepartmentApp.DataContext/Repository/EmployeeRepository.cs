@@ -52,10 +52,15 @@ namespace DepartmentApp.DataContext.Repository
         {
             try
             {
-                var existEmployee = Get(u => u.Id == entity.Id);
-                existEmployee = entity;
-                return true;
 
+                //var existEmployee = Get();
+                var existingEmployeeIndex=DBContext.Employees.FindIndex(u => u.Id == entity.Id);
+                if (existingEmployeeIndex!=-1)
+                {
+                    DBContext.Employees[existingEmployeeIndex] = entity;
+                  return true;
+                }
+                return false;
             }
             catch (Exception)
             {

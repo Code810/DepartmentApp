@@ -18,7 +18,7 @@ namespace DepartmentApp.Business.Servicess
             _departmentRepository = new ();
             _employeeRepository = new ();
         }
-        public Department get(string departmentName)
+        public Department Get(string departmentName)
         {
             return _departmentRepository.Get(n => n.Name.ToLower() == departmentName.ToLower());
         }
@@ -68,8 +68,6 @@ namespace DepartmentApp.Business.Servicess
             }
 
         } 
-
-      
         public List<Department> GetAll()
         {
             return _departmentRepository.GetAll();

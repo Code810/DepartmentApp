@@ -1,7 +1,9 @@
 ﻿using DepartmentApp.Domain.Models;
+using DepartmentApp.Domain.Models.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -54,7 +56,7 @@ namespace DepartmentApp.DataContext
             foreach (var item in Employees)
             {
                 lines.Add($"{item.Id},{item.Name},{item.Surname},{item.Age},{item.Adress},{item.Email},{item.Password}," +
-                    $"{item.department.Name}");
+                    $"{item.department.Name},{item.Rol}");
             }
             File.WriteAllLines(filepath, lines);
         }
@@ -76,8 +78,14 @@ namespace DepartmentApp.DataContext
                 employee.Email = exsistLine[5];
                 employee.Password = exsistLine[6];
                 employee.department = Departments.Find(d => d.Name == exsistLine[7]);
-
-
+                if (exsistLine[8]=="Admin")
+                {
+                    employee.Rol = Roles.Admin;
+                }
+                else
+                {
+                    employee.Rol = Roles.User;
+                }
                 Employees.Add(employee);
             }
         }

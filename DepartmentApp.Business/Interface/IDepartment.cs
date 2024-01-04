@@ -15,7 +15,7 @@ namespace DepartmentApp.Business.Interface
         Department Delete(int id);
         Department Get(int id);
         List<Department> GetAll();
-        Department get(string departmentName);
+        Department Get(string departmentName);
         List<Department> GetAll(int capacity);
         List<Department> GetAll(DateTime date);
         

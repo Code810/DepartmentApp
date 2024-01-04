@@ -47,27 +47,40 @@ namespace DepartmentApp.Business.Servicess
 
         public Employee Get(int id)
         {
-           return _employeeRepository.Get(e=>e.Id==id);
+            var existemploye = _employeeRepository.Get(e => e.Id == id);
+            if (existemploye is null)
+            {
+                return null;
+            }
+            else return existemploye;
         }
 
         public List<Employee> GetAll(string Name)
         {
-            return _employeeRepository.GetAll(e => e.Name.ToLower() == Name.ToLower());
+            var existemployees= _employeeRepository.GetAll(e => e.Name.ToLower() == Name.ToLower());
+            if (existemployees.Count == 0)return null;
+             return existemployees;
         }
 
         public List<Employee> GetAll()
         {
-            return _employeeRepository.GetAll();
+            var existemployees= _employeeRepository.GetAll();
+            if (existemployees.Count == 0) return null;
+            return existemployees;
         }
 
         public List<Employee> GetAll(int age)
         {
-            return _employeeRepository.GetAll(e=>e.Age==age);
+            var existemployees= _employeeRepository.GetAll(e=>e.Age==age);
+            if (existemployees.Count == 0) return null;
+            return existemployees;
         }
 
         public List<Employee> GetAll(DateTime date)
         {
-            return _employeeRepository.GetAll(e=>e.CreatedDate <= date);
+            var existemployees = _employeeRepository.GetAll(e=>e.CreatedDate <= date);
+            if (existemployees.Count == 0) return null;
+            return existemployees;
         }
 
         public Employee Update(int id, Employee employee, string departmentName)
@@ -78,7 +91,8 @@ namespace DepartmentApp.Business.Servicess
             if (existDepartmentByName is null) return null;
             var existEmployesByDepartment = _employeeRepository.GetAll(e => e.department.Name.ToLower() == departmentName.ToLower());
             if (existEmployesByDepartment.Count >= existDepartmentByName.Capacity && existEmployeeById.department.Name != departmentName) return null;
-           employee.department.Name = departmentName;
+           employee.department = existDepartmentByName;
+            employee.Id = id;
             if (_employeeRepository.Update(employee))
             {
                 DBContext.SaveChange();
