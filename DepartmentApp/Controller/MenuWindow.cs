@@ -1,8 +1,10 @@
-﻿using DepartmentApp.Business.Servicess;
+﻿using DepartmentApp.Business.Interface;
+using DepartmentApp.Business.Servicess;
 using DepartmentApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -14,30 +16,7 @@ namespace DepartmentApp.Controller
     {
         public MenuWindow()
         {
-
-            //var text = new Label()
-            //{
-            //    Text = "Click Button look for you information:",
-            //    X = Pos.Center()
-            //};
-
-            //var btnLogin = new Button()
-            //{
-            //    Text = "look",
-            //    Y = Pos.Bottom(text)+1 ,
-            //    // center the login button horizontally
-            //    X = Pos.Center(),
-            //    IsDefault = true,
-            //};
-            //btnLogin.Clicked += () =>
-            //{
-            //    Title = "(Ctrl+Q to quit)";
-            //    var emp = UserSession.Employee;
-            //    MessageBox.Query("Logging In", $"Id:{emp.Id} \n Name:{emp.Name} \n Surname:{emp.Surname} \n Email:{emp.Email}  \n Adress:{emp.Adress} \n Age:{emp.Age} \n  Department Name:{emp.department.Name} ", "Ok");               
-            //};
-            //Add(text,btnLogin);
-
-            
+        
             var top = Application.Top;
 
             var win = new Window("Admin Menu")
@@ -57,8 +36,11 @@ namespace DepartmentApp.Controller
             new MenuBarItem("Employe", new[]
             {
                 new MenuItem("1", "Get All Employee",GetAllEmployee),
-                new MenuItem("2 ", "Creat Employe", CreatEmployee),
-                new MenuItem("3", "Delet Employee by Id", DeleteEmployee)
+                new MenuItem("2 ","Creat Employe", CreatEmployee),
+                new MenuItem("3", "Delet Employee by Id", DeleteEmployee),
+                new MenuItem("4", "Get Employee by Id", GetEmployeById),
+                new MenuItem("5", "Get all Employee by name", GetAllEmployeByName),
+
                 // Add more methods as needed
             })
         });
@@ -107,7 +89,7 @@ namespace DepartmentApp.Controller
 
             var nameTextField = new TextField("")
             {
-                X = Pos.Right(nameLabel) + 5,
+                X = Pos.Right(nameLabel) + 12,
                 Y = 2,
                 Width = 40
             };
@@ -119,7 +101,7 @@ namespace DepartmentApp.Controller
 
             var SurnameTextField = new TextField("")
             {
-                X = Pos.Right(SurnameLabel) + 2,
+                X = Pos.Right(SurnameLabel) + 9,
                 Y = 4,
                 Width = 40
             };
@@ -132,7 +114,7 @@ namespace DepartmentApp.Controller
 
             var emailTextField = new TextField("")
             {
-                X = Pos.Right(emailLabel) + 4,
+                X = Pos.Right(emailLabel) + 11,
                 Y = 6,
                 Width = 40
             };
@@ -144,7 +126,7 @@ namespace DepartmentApp.Controller
 
             var passwordTextField = new TextField("")
             {
-                X = Pos.Right(passwordLabel) + 1,
+                X = Pos.Right(passwordLabel) + 8,
                 Y = 8,
                 Width = 40
             };
@@ -157,7 +139,7 @@ namespace DepartmentApp.Controller
 
             var ageTextField = new TextField("")
             {
-                X = Pos.Right(ageLabel) + 6,
+                X = Pos.Right(ageLabel) + 13,
                 Y = 10,
                 Width = 40
             };
@@ -170,7 +152,7 @@ namespace DepartmentApp.Controller
 
             var adressTextField = new TextField("")
             {
-                X = Pos.Right(adressLabel) + 3,
+                X = Pos.Right(adressLabel) + 10,
                 Y = 12,
                 Width = 40
             };
@@ -183,7 +165,7 @@ namespace DepartmentApp.Controller
 
             var departmentNameTextField = new TextField("")
             {
-                X = Pos.Right(emailLabel) + 6,
+                X = Pos.Right(departmentNameLabel) + 1,
                 Y = 14,
                 Width = 40
             };
@@ -304,7 +286,122 @@ namespace DepartmentApp.Controller
             top.Add(mainWindow);
 
         }
+
+        static void GetEmployeById()
+        {
+            var employeservice = new EmployeeService();
+
+            var top = Application.Top;
+
+            var mainWindow = new Window("Enter Id")
+            {
+                X = 0,
+                Y = 1,
+                Width = Dim.Fill(),
+                Height = Dim.Fill()
+            };
+
+            // Create labels, text fields, and buttons
+            var idLabel = new Label("Id:")
+            {
+                X = 3,
+                Y = 2
+            };
+            var idTextField = new TextField("")
+            {
+                X = Pos.Right(idLabel) + 1,
+                Y = 2,
+                Width = 40
+            };
+
+            var Get = new Button("Get Employee")
+            {
+                X = 3,
+                Y = 4,
+
+            };
+            Get.Clicked += () =>
+            {
+                bool result = int.TryParse(idTextField.Text.ToString(), out int intId);
+                if (result)
+                {
+                    var employe = employeservice.Get(intId);
+                    if (employe is not null)
+                    {
+                        MessageBox.Query("Employee", $"iD:{employe.Id} \n Name:{employe.Name} \n Surname:{employe.Surname} \n Age:{employe.Age}\n" +
+                            $"Email:{employe.Email}\n Password:{employe.Password} \n Adress:{employe.Adress} \n Department name:{employe.department.Name}", "OK");
+                    }
+                    else
+                    {
+                        MessageBox.ErrorQuery("Wrong", "Something went wrong", "Ok");
+                    }
+                }
+                else
+                {
+                    MessageBox.ErrorQuery("Eror", "Id must be a number", "Ok");
+                }
+            };
+
+            mainWindow.Add(idLabel, idTextField, Get);
+
+            top.Add(mainWindow);
+        }
+
+        static void GetAllEmployeByName()
+        {
+            var employeservice = new EmployeeService();
+
+            var top = Application.Top;
+
+            var mainWindow = new Window("Enter name")
+            {
+                X = 0,
+                Y = 1,
+                Width = Dim.Fill(),
+                Height = Dim.Fill()
+            };
+
+            // Create labels, text fields, and buttons
+            var nameLabel = new Label("Name:")
+            {
+                X = 3,
+                Y = 2
+            };
+            var nameTextField = new TextField("")
+            {
+                X = Pos.Right(nameLabel) + 1,
+                Y = 2,
+                Width = 40
+            };
+
+            var Get = new Button("Get Employee")
+            {
+                X = 3,
+                Y = 4,
+
+            };
+            Get.Clicked += () =>
+            {
+                var employes = employeservice.GetAll(nameTextField.Text.ToString());
+                if (employes is not null)
+                {
+                    foreach (var employe in employes)
+                    {
+                        MessageBox.Query("Employee", $"iD:{employe.Id} \n Name:{employe.Name} \n Surname:{employe.Surname} \n Age:{employe.Age}\n" +
+                        $"Email:{employe.Email}\n Password:{employe.Password} \n Adress:{employe.Adress} \n Department name:{employe.department.Name}", "OK");
+                    }
+                }
+                else
+                {
+                    MessageBox.ErrorQuery("Wrong", "Something went wrong", "Ok");
+                }
+            };
+        
+
+            mainWindow.Add(nameLabel, nameTextField, Get);
+
+            top.Add(mainWindow);
+        }
     }
 }
-//    }
-//}
+
