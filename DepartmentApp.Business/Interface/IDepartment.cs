@@ -18,6 +18,7 @@ namespace DepartmentApp.Business.Interface
         Department Get(string departmentName);
         List<Department> GetAll(int capacity);
         List<Department> GetAll(DateTime date);
+        string GetDepartmentCapacityStatus(string departmentName);
         
     }
 }

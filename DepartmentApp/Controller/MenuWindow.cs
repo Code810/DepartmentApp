@@ -59,7 +59,8 @@ namespace DepartmentApp.Controller
                 new MenuItem("4", "Get Department by Id", GetDepartmentById),
                 new MenuItem("5", "Get Department by name", GetDepartmentByName),
                 new MenuItem("6", "Get all Deparments by capacity", GetAllDepartmentByCapacity),
-                new MenuItem("7", "Update Department", UpdateDepartment)
+                new MenuItem("7", "Update Department", UpdateDepartment),
+                new MenuItem("8", " Department capacity status", DepartmentCapacityStatus)
 
                 // Add more methods as needed
             })
@@ -1208,6 +1209,55 @@ namespace DepartmentApp.Controller
                     };
 
                     mainWindow.Add(idLabel, idTextField, Get);
+
+                    top.Add(mainWindow);
+                }
+                static void DepartmentCapacityStatus()
+                {
+                    var departmentService = new DepartmentService();
+
+                    var top = Application.Top;
+
+                    var mainWindow = new Window("Enter department name")
+                    {
+                        X = 0,
+                        Y = 1,
+                        Width = Dim.Fill(),
+                        Height = Dim.Fill()
+                    };
+                    var nameLabel = new Label("Name:")
+                    {
+                        X = 3,
+                        Y = 2
+                    };
+                    var nameTextField = new TextField("")
+                    {
+                        X = Pos.Right(nameLabel) + 1,
+                        Y = 2,
+                        Width = 40
+                    };
+
+                    var Get = new Button("Get Department Status")
+                    {
+                        X = 3,
+                        Y = 4,
+
+                    };
+                    Get.Clicked += () =>
+                    {
+                        var departmentStatus = departmentService.GetDepartmentCapacityStatus(nameTextField.Text.ToString());
+                        if (departmentStatus is not null)
+                        {
+                            MessageBox.Query("Employee", departmentStatus, "OK");
+                        }
+                        else
+                        {
+                            MessageBox.ErrorQuery("Wrong", "Something went wrong", "Ok");
+                        }
+                    };
+
+
+                    mainWindow.Add(nameLabel, nameTextField, Get);
 
                     top.Add(mainWindow);
                 }

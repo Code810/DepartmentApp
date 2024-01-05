@@ -25,14 +25,16 @@ namespace DepartmentApp.Controller
             // Create input components and labels
             var usernameLabel = new Label()
             {
-                Text = "Username:"
+                Text = "Username:",
+                Y=3,
+                X=2
             };
 
             var usernameText = new TextField("")
             {
                 // Position text field adjacent to the label
                 X = Pos.Right(usernameLabel) + 1,
-
+                Y=3,
                 // Fill remaining horizontal space
                 Width = Dim.Fill(88),
             };
@@ -57,9 +59,9 @@ namespace DepartmentApp.Controller
             var btnLogin = new Button()
             {
                 Text = "Login",
-                Y = Pos.Bottom(passwordLabel) + 1,
+                Y = 4,
                 // center the login button horizontally
-                X = Pos.Center(),
+                X = 50,
                 IsDefault = true,
             };
 

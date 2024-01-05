@@ -11,5 +11,6 @@ namespace DepartmentApp.Domain.Models
     {
         public string Name { get; set; }
         public int Capacity { get; set; }
+        public string CapacityStatus { get; set; }
     }
 }

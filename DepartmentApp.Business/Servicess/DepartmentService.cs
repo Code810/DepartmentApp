@@ -32,7 +32,7 @@ namespace DepartmentApp.Business.Servicess
             var existDepartment = _departmentRepository.Get(n=>n.Name.ToLower() == department.Name.ToLower());
             if (existDepartment is not null) return null;
             department.Id = count;
-            department.CreatedDate= DateTime.Now;
+            department.CreatedDate = DateTime.Now;
             var result = _departmentRepository.Creat(department);
             if (!result)  return null;
             DBContext.SaveChange();
@@ -102,6 +102,15 @@ namespace DepartmentApp.Business.Servicess
                 }
                 else return null;
             }
+        }
+
+        public string GetDepartmentCapacityStatus(string departmentName)
+        {
+           var existEmployees=_departmentRepository.GetAll(d=>d.Name == departmentName);
+            var existDepartment = _departmentRepository.Get(d => d.Name == departmentName);
+            string result = $"Capacity:{existDepartment.Capacity}\n İs Full:{existEmployees.Count} \n Is Empty:{existDepartment.Capacity- existEmployees.Count}";
+            existDepartment.CapacityStatus = result;
+            return result;
         }
     }
 }
