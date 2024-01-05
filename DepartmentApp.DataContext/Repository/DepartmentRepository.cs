@@ -53,10 +53,13 @@ namespace DepartmentApp.DataContext.Repository
         {
             try
             {
-                var existDepartment = Get(u => u.Id == entity.Id);
-                existDepartment = entity;
-                return true;
-
+                var existDepartmentIndex = DBContext.Departments.FindIndex(u => u.Id == entity.Id);
+             if (existDepartmentIndex != -1)
+                {
+                    DBContext.Departments[existDepartmentIndex] = entity;
+                    return true;
+                }
+               return false;
             }
             catch (Exception)
             {

@@ -12,7 +12,7 @@ namespace DepartmentApp.Business.Servicess
     {
         private readonly DepartmentRepository _departmentRepository;
         private readonly EmployeeRepository _employeeRepository;
-        private static int count = DBContext.Departments.Last().Id+ 1;
+        private static int count = DBContext.Departments.Last().Id+1;
         public DepartmentService()
         {
             _departmentRepository = new ();
@@ -36,6 +36,7 @@ namespace DepartmentApp.Business.Servicess
             var result = _departmentRepository.Creat(department);
             if (!result)  return null;
             DBContext.SaveChange();
+            count++;    
              return department;
         }
 
@@ -91,6 +92,7 @@ namespace DepartmentApp.Business.Servicess
             if (existDepartmentByName is not null) return null;
             else
             {
+                department.Id = id;
                 department.UpdatedDate = DateTime.Now;
                 if (_departmentRepository.Update(department))
                 {

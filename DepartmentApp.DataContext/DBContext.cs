@@ -33,7 +33,7 @@ namespace DepartmentApp.DataContext
             File.WriteAllLines(filepath, lines);
         }
 
-        public static void DepartmentsFromTextToList()
+        public static List<Department> DepartmentsFromTextToList()
         {
             string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp\\Departments.txt";
             List<string> lines = File.ReadAllLines(filepath, Encoding.UTF8).ToList();
@@ -47,6 +47,7 @@ namespace DepartmentApp.DataContext
                 department.Capacity = int.Parse(exsistLine[2]);
                 Departments.Add(department);
             }
+            return Departments;
         }
 
         public static void EmployeesAddFile()
@@ -61,7 +62,7 @@ namespace DepartmentApp.DataContext
             File.WriteAllLines(filepath, lines);
         }
 
-        public static void EmployessFromTextToList()
+        public static List<Employee> EmployessFromTextToList()
         {
             string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp\\Employees.txt";
             List<string> lines = File.ReadAllLines(filepath, Encoding.UTF8).ToList();
@@ -88,6 +89,7 @@ namespace DepartmentApp.DataContext
                 }
                 Employees.Add(employee);
             }
+            return Employees;
         }
 
         public static void SaveChange()

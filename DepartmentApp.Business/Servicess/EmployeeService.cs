@@ -29,6 +29,7 @@ namespace DepartmentApp.Business.Servicess
             bool result = _employeeRepository.Creat(employee);
             if (!result) return null;
             DBContext.SaveChange();
+            count++;  
             return employee;
         }
 

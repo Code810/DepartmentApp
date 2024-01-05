@@ -191,15 +191,21 @@ namespace DepartmentApp.Controller
                         Y = 14,
                         Width = 40
                     };
-
-                    var Creat = new Button("Creat Employee")
+                    var checkbox = new CheckBox("Admin")
                     {
                         X = 3,
                         Y = 16,
+                    };
+                    var Creat = new Button("Creat Employee")
+                    {
+                        X = 3,
+                        Y = 18,
 
                     };
+                   
                     Creat.Clicked += () =>
                     {
+                      
                         bool result = int.TryParse(ageTextField.Text.ToString(), out int intAge);
                         if (nameTextField.Text == NStack.ustring.Empty || SurnameTextField.Text == NStack.ustring.Empty || emailTextField.Text == NStack.ustring.Empty || passwordTextField.Text == NStack.ustring.Empty
                         || ageTextField.Text == NStack.ustring.Empty || adressTextField.Text == NStack.ustring.Empty || departmentNameTextField.Text == NStack.ustring.Empty)
@@ -223,10 +229,15 @@ namespace DepartmentApp.Controller
                                 Age = intAge,
                                 Adress = adressTextField.Text.ToString(),
                             };
+                            if (checkbox.Checked)
+                            {
+                                employe.Rol = Roles.Admin;
+                            }
                             var existemploye = employeeService.Creat(employe, departmentNameTextField.Text.ToString());
                             if (existemploye != null)
                             {
                                 MessageBox.Query("Registration Info", $"Name: {nameTextField.Text} Email: {emailTextField.Text}\n successfully created", "OK");
+                                
                             }
                             else
                             {
@@ -246,7 +257,7 @@ namespace DepartmentApp.Controller
                     };
                     // Add labels, text fields, and buttons to the main window
                     mainWindow.Add(nameLabel, nameTextField, SurnameLabel, SurnameTextField, emailLabel, emailTextField,
-                        passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, departmentNameLabel, departmentNameTextField, Creat);
+                        passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, departmentNameLabel, departmentNameTextField, checkbox, Creat);
 
                     top.Add(mainWindow);
                 }
@@ -636,10 +647,21 @@ namespace DepartmentApp.Controller
                                     Width = 40
                                 };
 
-                                var Update = new Button("Update Employee")
+                                var checkboxAdmin = new CheckBox("Admin")
                                 {
                                     X = 3,
                                     Y = 16,
+                                };
+                                var checkboxUser = new CheckBox("User")
+                                {
+                                    X = Pos.Right(checkboxAdmin) + 2,
+                                    Y = 16,
+                                };
+
+                                var Update = new Button("Update Employee")
+                                {
+                                    X = 3,
+                                    Y = 18,
 
                                 };
                                 Update.Clicked += () =>
@@ -667,6 +689,19 @@ namespace DepartmentApp.Controller
                                             Age = intAge,
                                             Adress = adressTextField.Text.ToString(),
                                         };
+                                        if (checkboxAdmin.Checked && checkboxUser.Checked)
+                                        {
+                                            MessageBox.ErrorQuery("Eror", "Only one of the roles can be selected ", "Ok");
+                                        }
+                                        if (checkboxAdmin.Checked)
+                                        {
+                                            employe.Rol = Roles.Admin;
+                                        }
+                                        if (checkboxUser.Checked)
+                                        {
+                                            employe.Rol= Roles.User;
+                                        }
+                                           
                                         var existemploye = employeeService.Update(intId, employe, departmentNameTextField.Text.ToString());
                                         if (existemploye != null)
                                         {
@@ -685,7 +720,8 @@ namespace DepartmentApp.Controller
                                 };
                                 // Add labels, text fields, and buttons to the main window
                                 mainWindow.Add(nameLabel, nameTextField, SurnameLabel, SurnameTextField, emailLabel, emailTextField,
-                                    passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, departmentNameLabel, departmentNameTextField, Update);
+                                    passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, 
+                                    departmentNameLabel, departmentNameTextField,checkboxAdmin,checkboxUser, Update);
 
                                 top.Add(mainWindow);
 
@@ -1099,7 +1135,7 @@ namespace DepartmentApp.Controller
 
                                 var nameTextField = new TextField($"{department.Name}")
                                 {
-                                    X = Pos.Right(nameLabel) + 12,
+                                    X = Pos.Right(nameLabel) + 1,
                                     Y = 2,
                                     Width = 40
                                 };
@@ -1107,20 +1143,20 @@ namespace DepartmentApp.Controller
                                 var departmentCapacityLabel = new Label("Capacity:")
                                 {
                                     X = 3,
-                                    Y = 10
+                                    Y = 4
                                 };
 
                                 var departmentCapacityTextField = new TextField($"{department.Capacity}")
                                 {
-                                    X = Pos.Right(departmentCapacityLabel) + 13,
-                                    Y = 10,
+                                    X = Pos.Right(departmentCapacityLabel) + 8,
+                                    Y = 4,
                                     Width = 40
                                 };
 
                                 var Update = new Button("Update Department")
                                 {
                                     X = 3,
-                                    Y = 16,
+                                    Y = 8,
 
                                 };
                                 Update.Clicked += () =>
@@ -1180,39 +1216,35 @@ namespace DepartmentApp.Controller
 
 
             }
-            if (employe.Rol==Roles.Admin)
+            if (employe.Rol==Roles.User)
             {
+                
                 EmployeeService employeeService = new();
-                var top = Application.Top;
 
-                var mainWindow = new Window($"Information about {UserSession.Employee.Name} {UserSession.Employee.Surname}")
-                {
-                    X = 0,
-                    Y = 1,
-                    Width = Dim.Fill(),
-                    Height = Dim.Fill()
-                };
-                var Text = new Label("If you wont look your information please click (LOOK) button")
-                {
-                    X = 3,
-                    Y = 2
-                };
-                var look = new Button("LOOK")
-                {
-                    X = 3,
-                    Y = 4,
+                Title = $"Information about {employe.Name} {employe.Surname}";
 
+                var informationLabel = new Label("If you wont to look your information please click button (LOOK):")
+                {
+                   Y=4,
+                   X=Pos.Center(),
                 };
-                look.Clicked += () =>
+
+                var btnLogin = new Button()
+                {
+                    Text = "LOOK",
+                    Y = Pos.Bottom(informationLabel) + 1,
+                    X = Pos.Center(),
+                    IsDefault = true,
+                };
+
+                btnLogin.Clicked += () =>
                 {
                     MessageBox.Query("Employee", $"iD:{employe.Id} \n Name:{employe.Name} \n Surname:{employe.Surname} \n Age:{employe.Age}\n" +
-                                    $"Email:{employe.Email}\n Password:{employe.Password} \n Adress:{employe.Adress} \n Department name:{employe.department.Name}", "OK");
-
+                                     $"Email:{employe.Email}\n Password:{employe.Password} \n Adress:{employe.Adress} \n Department name:{employe.department.Name}", "OK");
                 };
 
-                mainWindow.Add(Text, look);
-
-                top.Add(mainWindow);
+                // Add the views to the Window
+                Add(informationLabel, btnLogin);
             }
         }
     }
