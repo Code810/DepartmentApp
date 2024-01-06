@@ -20,9 +20,8 @@ namespace DepartmentApp.Controller
         public LoginWindow()
         {
           
-            Title = "(Ctrl+Q to quit)";
-
-            // Create input components and labels
+            Title = "(Ctrl+Q to quit)  ";
+            Title +="COMPANY APP";
             var usernameLabel = new Label()
             {
                 Text = "Username:",
@@ -32,10 +31,8 @@ namespace DepartmentApp.Controller
 
             var usernameText = new TextField("")
             {
-                // Position text field adjacent to the label
                 X = Pos.Right(usernameLabel) + 1,
                 Y=3,
-                // Fill remaining horizontal space
                 Width = Dim.Fill(88),
             };
 
@@ -49,23 +46,19 @@ namespace DepartmentApp.Controller
             var passwordText = new TextField("")
             {
                 Secret = true,
-                // align with the text box above
                 X = Pos.Left(usernameText),
                 Y = Pos.Top(passwordLabel),
                 Width = Dim.Fill(88),
             };
 
-            // Create login button
             var btnLogin = new Button()
             {
                 Text = "Login",
                 Y = 4,
-                // center the login button horizontally
                 X = 50,
                 IsDefault = true,
             };
 
-            // When login button is clicked display a message popup
             btnLogin.Clicked += () => {
                 Employee emp = _service.Login((string)passwordText.Text, (string)usernameText.Text);
                 UserSession.Employee =emp;
@@ -81,7 +74,6 @@ namespace DepartmentApp.Controller
                 }
             };
 
-            // Add the views to the Window
             Add(usernameLabel, usernameText, passwordLabel, passwordText, btnLogin);
         }
     }

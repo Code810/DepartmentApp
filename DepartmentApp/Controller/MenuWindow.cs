@@ -20,9 +20,6 @@ namespace DepartmentApp.Controller
             var employe = UserSession.Employee;
             if (employe.Rol == Roles.Admin)
             {
-                
-
-
                 var top = Application.Top;
 
                 var win = new Window("Admin Menu")
@@ -49,7 +46,6 @@ namespace DepartmentApp.Controller
                 new MenuItem("6", "Get all Employee by age", GetAllEmployeByAge),
                 new MenuItem("7", "Update Employee", UpdateEmployee)
 
-                // Add more methods as needed
             }),
             new MenuBarItem("Department", new[]
             {
@@ -62,7 +58,6 @@ namespace DepartmentApp.Controller
                 new MenuItem("7", "Update Department", UpdateDepartment),
                 new MenuItem("8", " Department capacity status", DepartmentCapacityStatus)
 
-                // Add more methods as needed
             })
 
           });
@@ -94,16 +89,14 @@ namespace DepartmentApp.Controller
                     EmployeeService employeeService = new();
                     var top = Application.Top;
 
-                    // Create the main window
                     var mainWindow = new Window("Fill out the form ")
                     {
                         X = 0,
-                        Y = 1, // Leave space for the menu bar
+                        Y = 1, 
                         Width = Dim.Fill(),
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var nameLabel = new Label("Name:")
                     {
                         X = 3,
@@ -256,7 +249,6 @@ namespace DepartmentApp.Controller
 
 
                     };
-                    // Add labels, text fields, and buttons to the main window
                     mainWindow.Add(nameLabel, nameTextField, SurnameLabel, SurnameTextField, emailLabel, emailTextField,
                         passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, departmentNameLabel, departmentNameTextField, checkbox, Creat);
 
@@ -276,7 +268,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -335,7 +326,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -395,7 +385,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var nameLabel = new Label("Name:")
                     {
                         X = 3,
@@ -450,7 +439,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var AgeLabel = new Label("Age:")
                     {
                         X = 3,
@@ -516,7 +504,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -553,12 +540,11 @@ namespace DepartmentApp.Controller
                                 var mainWindow = new Window("Fill out the Update form ")
                                 {
                                     X = 0,
-                                    Y = 1, // Leave space for the menu bar
+                                    Y = 1, 
                                     Width = Dim.Fill(),
                                     Height = Dim.Fill()
                                 };
 
-                                // Create labels, text fields, and buttons
                                 var nameLabel = new Label("Name:")
                                 {
                                     X = 3,
@@ -719,7 +705,6 @@ namespace DepartmentApp.Controller
                                     }
 
                                 };
-                                // Add labels, text fields, and buttons to the main window
                                 mainWindow.Add(nameLabel, nameTextField, SurnameLabel, SurnameTextField, emailLabel, emailTextField,
                                     passwordLabel, passwordTextField, ageLabel, ageTextField, adressLabel, adressTextField, 
                                     departmentNameLabel, departmentNameTextField,checkboxAdmin,checkboxUser, Update);
@@ -761,16 +746,14 @@ namespace DepartmentApp.Controller
                  DepartmentService departmentService = new();
                     var top = Application.Top;
 
-                    // Create the main window
                     var mainWindow = new Window("Fill out the form ")
                     {
                         X = 0,
-                        Y = 1, // Leave space for the menu bar
+                        Y = 1, 
                         Width = Dim.Fill(),
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var departmentNameLabel = new Label("Department Name:")
                     {
                         X = 3,
@@ -833,7 +816,6 @@ namespace DepartmentApp.Controller
                         }
 
                     };
-                    // Add labels, text fields, and buttons to the main window
                     mainWindow.Add(departmentNameLabel, departmentNameTextField,DepartmentCapacityLabel,DepartmentCapacityTextField, Creat);
 
                     top.Add(mainWindow);
@@ -852,7 +834,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -911,7 +892,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -970,7 +950,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var nameLabel = new Label("Name:")
                     {
                         X = 3,
@@ -1022,7 +1001,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var capacityLabel = new Label("Capacity:")
                     {
                         X = 3,
@@ -1087,7 +1065,6 @@ namespace DepartmentApp.Controller
                         Height = Dim.Fill()
                     };
 
-                    // Create labels, text fields, and buttons
                     var idLabel = new Label("Id:")
                     {
                         X = 3,
@@ -1122,12 +1099,11 @@ namespace DepartmentApp.Controller
                                 var mainWindow = new Window("Fill out the Update form ")
                                 {
                                     X = 0,
-                                    Y = 1, // Leave space for the menu bar
+                                    Y = 1, 
                                     Width = Dim.Fill(),
                                     Height = Dim.Fill()
                                 };
 
-                                // Create labels, text fields, and buttons
                                 var nameLabel = new Label("Department Name:")
                                 {
                                     X = 3,
@@ -1191,7 +1167,6 @@ namespace DepartmentApp.Controller
                                     }
 
                                 };
-                                // Add labels, text fields, and buttons to the main window
                                 mainWindow.Add(nameLabel, nameTextField, departmentCapacityLabel, departmentCapacityTextField, Update);
 
                                 top.Add(mainWindow);
@@ -1293,7 +1268,6 @@ namespace DepartmentApp.Controller
                                      $"Email:{employe.Email}\n Password:{employe.Password} \n Adress:{employe.Adress} \n Department name:{employe.department.Name}", "OK");
                 };
 
-                // Add the views to the Window
                 Add(informationLabel, btnLogin);
             }
         }
