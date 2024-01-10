@@ -1,5 +1,6 @@
 ﻿using DepartmentApp.Domain.Models;
 using DepartmentApp.Domain.Models.Helpers;
+using System.Diagnostics.SymbolStore;
 using System.Text;
 namespace DepartmentApp.DataContext
 {
@@ -17,7 +18,13 @@ namespace DepartmentApp.DataContext
         }
         public static void DepartmentsAddFile()
         {
-            string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp\\Departments.txt";
+            string fileName = "Departments.txt";
+            string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp";
+            string fullFilePath=System.IO.Path.Combine(filepath, fileName);
+            if (!System.IO.File.Exists(fullFilePath))
+            {
+                System.IO.File.Create(fullFilePath);
+            }
             List<string> lines = new();
             foreach (var item in Departments)
             {
@@ -45,7 +52,13 @@ namespace DepartmentApp.DataContext
 
         public static void EmployeesAddFile()
         {
-            string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp\\Employees.txt";
+            string fileName = "Employees.txt";
+            string filepath = "C:\\Users\\seidb\\OneDrive\\Masaüstü\\DepartmentApp";
+            string fullFilePath = System.IO.Path.Combine(filepath, fileName);
+            if (!System.IO.File.Exists(fullFilePath))
+            {
+                System.IO.File.Create(fullFilePath);
+            }
             List<string> lines = new();
             foreach (var item in Employees)
             {
