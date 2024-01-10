@@ -106,11 +106,22 @@ namespace DepartmentApp.Business.Servicess
 
         public string GetDepartmentCapacityStatus(string departmentName)
         {
-           var existEmployees=_departmentRepository.GetAll(d=>d.Name == departmentName);
+           var existEmployees=_employeeRepository.GetAll(d=>d.department.Name == departmentName);
             var existDepartment = _departmentRepository.Get(d => d.Name == departmentName);
-            string result = $"Capacity:{existDepartment.Capacity}\n İs Full:{existEmployees.Count} \n Is Empty:{existDepartment.Capacity- existEmployees.Count}";
-            existDepartment.CapacityStatus = result;
-            return result;
+            string result;
+            if (existEmployees.Count > 0 && existDepartment is not null)
+            {
+                 result = $"Capacity:{existDepartment.Capacity}\n İs Full:{existEmployees.Count} \n Is Empty:{existDepartment.Capacity - existEmployees.Count}";
+                existDepartment.CapacityStatus = result;
+
+                return result;
+            }
+            else
+            {
+                result = string.Empty;
+                return result;
+            }
+           
         }
     }
 }

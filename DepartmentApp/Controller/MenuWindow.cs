@@ -1221,7 +1221,7 @@ namespace DepartmentApp.Controller
                     Get.Clicked += () =>
                     {
                         var departmentStatus = departmentService.GetDepartmentCapacityStatus(nameTextField.Text.ToString());
-                        if (departmentStatus is not null)
+                        if (departmentStatus != string.Empty)
                         {
                             MessageBox.Query("Employee", departmentStatus, "OK");
                         }

@@ -1,13 +1,6 @@
 ﻿using DepartmentApp.Domain.Models;
 using DepartmentApp.Domain.Models.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.ExceptionServices;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
 namespace DepartmentApp.DataContext
 {
     public static class DBContext
